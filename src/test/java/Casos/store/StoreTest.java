@@ -1,4 +1,4 @@
-package examples.store;
+package Casos.store;
 
 import com.intuit.karate.junit5.Karate;
 
