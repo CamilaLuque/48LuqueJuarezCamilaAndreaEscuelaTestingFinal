@@ -4,15 +4,19 @@ function fn() {
   if (!env) {
     env = 'dev';
   }
-  var config = {
-    env: env,
-    myVarName: 'someValue'
-  }
   if (env == 'dev') {
-    // customize
-    // e.g. config.foo = 'bar';
+    apiPetStore = 'https://petstore.swagger.io/v2/'
   } else if (env == 'e2e') {
     // customize
   }
+
+  var config = {
+    env: env,
+    myVarName: 'someValue',
+    apiPetStore: apiPetStore
+  }
+
   return config;
 }
+
+//mvn clean test -Dtest=UsersRunner -Dkarate.options="--tags @TEST-1"
