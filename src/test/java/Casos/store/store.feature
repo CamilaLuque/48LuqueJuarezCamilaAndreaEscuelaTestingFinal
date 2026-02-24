@@ -1,45 +1,47 @@
-Feature: sample karate test script
-  for help, see: https://github.com/karatelabs/karate/wiki/IDE-Support
+@regresion
+Feature: Automatizar el acceso a ordenes de Pet Store
 
   Background:
-    * url 'https://jsonplaceholder.typicode.com'
+    * url apiPetStore
+    * def OrderJSON = read('classpath:ArchivosJSON/storeJSON/order.json')
 
-  Scenario: get all users and then get the first user by id
-    Given path 'users'
+  @TEST-1 @happypath
+  Scenario: Verificar el retorno de inventario de mascotas por estatus - OK
+    Given path 'store', 'inventory'
     When method get
     Then status 200
+    And print response
 
-    * def first = response[0]
-
-    Given path 'users', first.id
-    When method get
-    Then status 200
-
-  Scenario: create a user and then get it by id
-    * def user =
-      """
-      {
-        "name": "Test User",
-        "username": "testuser",
-        "email": "test@user.com",
-        "address": {
-          "street": "Has No Name",
-          "suite": "Apt. 123",
-          "city": "Electri",
-          "zipcode": "54321-6789"
-        }
-      }
-      """
-
-    Given url 'https://jsonplaceholder.typicode.com/users'
-    And request user
+  @TEST-2 @happypath
+  Scenario: Verificar que se realice un pedido para la mascota - OK
+    Given path 'store', 'order'
+    And request OrderJSON
     When method post
-    Then status 201
+    Then status 200
+    And print response
 
-    * def id = response.id
-    * print 'created id is: ', id
+  @TEST-3 @happypath
+  Scenario Outline: Verificar la busqueda por id de una orden de compra - OK
+    Given path 'store/', 'order' + '<idOrder>'
+    When method get
+    Then status 200
+    And print response
 
-    Given path id
-    # When method get
-    # Then status 200
-    # And match response contains user
+    Examples:
+      | idOrder |
+      | 1       |
+      | 2       |
+      | 3       |
+
+  @TEST-4 @happypath
+  Scenario Outline: Eliminar compra por id - OK
+    Given path 'store/', 'order' + '<idOrder>'
+    When method delete
+    Then status 200
+    And print response
+
+    Examples:
+      | idOrder |
+      | 1       |
+      | 2       |
+      | 3       |
