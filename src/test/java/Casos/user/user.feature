@@ -30,19 +30,37 @@ Feature: Automatizar el backend de Pet Store
       | persona3    |
 
   @TEST-3 @happypath
-  Scenario Outline: Verificar la actualización de usuario por nombre de usuario - OK
-    Given path 'user', '<username>'
-    * set CreateUserJSON.username = '<usernameNuevo>'
-    And request CreateUserJSON
+  Scenario: Verificar la actualización de usuario por nombre de usuario - OK
+    * def UpdateUserJSON = read('classpath:ArchivosJSON/userJSON/updateUser.json')
+    Given path 'user', CreateUserJSON.username
+    And request UpdateUserJSON
     When method put
     Then status 200
     And print response
 
-    Examples:
-      | username    | usernameNuevo |
-      | CamilaLuque | camilaLuque   |
-      | persona2    | Persona2      |
-      | persona3    | Persona3      |
+  @TEST-4 @happypath
+  Scenario: Eliminar por username de usuario - OK
+    * def username = 'persona2'
+    Given path 'user', username
+    When method delete
+    Then status 200
+    And print response
+
+  @TEST-5 @happypath
+  Scenario: Login de un usuario al sistema - OK
+    Given path 'user', 'login'
+    And param username = 'persona2'
+    And param password = 'contraseña2'
+    When method get
+    Then status 200
+    And print response
+
+  @TEST-6 @happypath
+  Scenario: Logout de un usuario al sistema - OK
+    Given path 'user', 'logout'
+    When method get
+    Then status 200
+    And print response
 
   @TEST-7 @happypath
   Scenario: Verificar la creacion de una lista de usuarios en Pet Store por un array - OK
@@ -60,33 +78,3 @@ Feature: Automatizar el backend de Pet Store
     When method post
     Then status 200
     And print response
-
-  @TEST-4 @happypath
-  Scenario Outline: Verificar la busqueda por id de mascota - OK
-    Given path 'store/' + '<idPet>'
-    When method get
-    Then status 200
-    And print response
-
-    Examples:
-      | idPet |
-      | 1     |
-      | 19    |
-      | 13    |
-
-  @TEST-5 @happypath
-  Scenario: Verificar la actualizacion por id de mascota - OK
-    * def id = 1
-    Given path 'store', id
-    When method get
-    Then status 200
-    And print response
-
-  @TEST-6 @happypath
-  Scenario: Eliminar por id de mascota - OK
-    * def id = 19
-    Given path 'store', id
-    When method delete
-    Then status 200
-    And print response
-
