@@ -1,5 +1,5 @@
 @user
-Feature: Automatizar el backend de Pet Store
+Feature: Automatizar las operaciones de user de Pet Store
 
   Background:
     * url apiPetStore
