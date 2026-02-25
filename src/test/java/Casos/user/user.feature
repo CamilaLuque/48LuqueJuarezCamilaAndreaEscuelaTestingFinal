@@ -7,7 +7,7 @@ Feature: Automatizar las operaciones de user de Pet Store
     * def CreateUserArrayJSON = read('classpath:ArchivosJSON/userJSON/createUserArray.json')
 
   @TEST-1 @happypath
-  Scenario: Creacion de una lista de usuarios en Pet Store por una lista - OK
+  Scenario: Creacion de una lista de usuarios en Pet Store dada una lista - OK
     Given path 'user', 'createWithList'
     And request CreateUserArrayJSON
     When method post
@@ -16,7 +16,7 @@ Feature: Automatizar las operaciones de user de Pet Store
     And print response
 
   @TEST-2 @happypath
-  Scenario Outline: Obtención de usuario por username - OK
+  Scenario Outline: Retorno de usuario por username - OK
     Given path 'user', '<username>'
     When method get
     Then status 200
@@ -38,7 +38,7 @@ Feature: Automatizar las operaciones de user de Pet Store
     And print response
 
   @TEST-4 @happypath
-  Scenario: Eliminar por username de usuario - OK
+  Scenario: Eliminar un usuario por username- OK
     * def username = 'persona2'
     Given path 'user', username
     When method delete
@@ -55,14 +55,14 @@ Feature: Automatizar las operaciones de user de Pet Store
     And print response
 
   @TEST-6 @happypath
-  Scenario: Logout de un usuario al sistema - OK
+  Scenario: Logout de un usuario del sistema - OK
     Given path 'user', 'logout'
     When method get
     Then status 200
     And print response
 
   @TEST-7 @happypath
-  Scenario: Creacion de una lista de usuarios en Pet Store por un array - OK
+  Scenario: Creacion de un array de usuarios en Pet Store dado un array - OK
     Given path 'user', 'createWithArray'
     And request CreateUserArrayJSON
     When method post
