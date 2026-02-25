@@ -14,7 +14,7 @@ Feature: Automatizar el acceso a ordenes de Pet Store
     And print response
 
   @TEST-2 @happypath
-  Scenario: Realizar un pedido para la mascota - OK
+  Scenario: Realizar un pedido para una mascota - OK
     Given path 'store', 'order'
     And request OrderJSON
     When method post
@@ -22,7 +22,7 @@ Feature: Automatizar el acceso a ordenes de Pet Store
     And print response
 
   @TEST-3 @happypath
-  Scenario: Busqueda por id de una orden de compra - OK
+  Scenario: Busqueda de una orden de compra por id - OK
     * def idOrder = 1
     Given path 'store', 'order', idOrder
     When method get
@@ -31,7 +31,7 @@ Feature: Automatizar el acceso a ordenes de Pet Store
     And match response.id == 1
 
   @TEST-4 @happypath
-  Scenario: Eliminar compra por id - OK
+  Scenario: Eliminar una orden de compra por id - OK
     * def idOrder = 1
     Given path 'store', 'order', idOrder
     When method delete
@@ -55,7 +55,7 @@ Feature: Automatizar el acceso a ordenes de Pet Store
     And print response
 
   @TEST-7 @unhappypath
-  Scenario: Eliminar compra por id inexistente - ERROR 404
+  Scenario: Eliminar una orden de compra por id inexistente - ERROR 404
     * def idOrder = -1234
     Given path 'store', 'order', idOrder
     When method delete
