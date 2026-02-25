@@ -25,4 +25,4 @@ Todas las pruebas se ejecutan desde la línea de comandos, ubicándote en la ra�
 Para ejecutar el conjunto completo de pruebas de regresión, utiliza el siguiente comando. Este comando apunta al runner `ServerRestRunner` y ejecuta todos los escenarios etiquetados con `@regresion` en el entorno de certificación (`cert`).
 
 ```bash
-mvn clean test -Dtest=StoreTest -Dkarate.options="--tags @TEST-2" -Dkarate.env=dev 
+mvn clean test -Dtest=StoreTest -Dkarate.options="--tags @TEST-2" -Dkarate.env=dev
