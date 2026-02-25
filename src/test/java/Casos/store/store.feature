@@ -39,7 +39,7 @@ Feature: Automatizar el acceso a ordenes de Pet Store
     And print response
 
   @TEST-5 @unhappypath
-  Scenario: Realizar un pedido para la mascota invalido - ERROR 500
+  Scenario: Realizar un pedido invalido para una mascota - ERROR 500
     Given path 'store', 'order'
     And request ErrorOrderJSON
     When method post
