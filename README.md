@@ -17,7 +17,7 @@ Antes de ejecutar las pruebas, asegúrate de tener instalado y configurado lo si
 *   **Store:** Automatizar el acceso a órdenes de Pet Store.
     * `GET` /store/inventory: Retorno de inventario de mascotas por estatus. 
     * `POST` /store/order: Realizar un pedido para una mascota.
-    * `GET` /store/order/{orderId}: Búsqueda una orden de compra por su id.
+    * `GET` /store/order/{orderId}: Búsqueda de una orden de compra por su id.
     * `DELETE` /store/order/{orderId}: Eliminar una orden de compra por id.
     
 *   **User:** Automatizar las operaciones de user de Pet Store.
