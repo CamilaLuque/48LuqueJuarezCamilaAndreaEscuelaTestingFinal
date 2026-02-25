@@ -27,7 +27,7 @@ Antes de ejecutar las pruebas, asegúrate de tener instalado y configurado lo si
     * `DELETE` /user/{username}: Eliminar un usuario por `username`.
     * `GET` /user/login: Login de un usuario al sistema.
     * `GET` /user/logout: Logout de un usuario del sistema.
-    * `POST` /user/createWithArray: Creación de una lista de usuarios en Pet Store dada una lista.Creación de un array de usuarios en Pet Store dado un array.
+    * `POST` /user/createWithArray: Creación de un array de usuarios en Pet Store dado un array.
     * `POST` /user: Creación de un usuario en Pet Store.
 
 ## 3. Ejecución de las Pruebas
