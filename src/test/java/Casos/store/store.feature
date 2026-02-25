@@ -1,4 +1,4 @@
-@regresion
+@store
 Feature: Automatizar el acceso a ordenes de Pet Store
 
   Background:
